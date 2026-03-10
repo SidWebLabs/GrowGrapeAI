@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GrowGrape.AI</title>
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        header {
+            text-align: center;
+            background-color: #2c7a47;
+            color: white;
+            padding: 30px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        header img {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            position: sticky;
+            top: 0;
+            background-color: #f8f9fa;
+            z-index: 100;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .option {
+            padding: 12px 25px;
+            background-color: #2c7a47;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .option:hover {
+            background-color: #23633a;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+        .content-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .section-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .section-button {
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .section-button:hover {
+            background-color: #45a049;
+            transform: scale(1.02);
+        }
+        .method-buttons {
+            display: none;
+            margin: 10px 0;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            animation: slideDown 0.3s ease-out;
+            color: #333;
+        }
+        .method-button {
+            display: block;
+            padding: 10px 15px;
+            margin: 8px 0;
+            background-color: #ff9900;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .method-button:hover {
+            background-color: #e68a00;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c7a47;
+            color: white;
+            margin-top: 40px;
+        }
+        .info-content p {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+</style>
+</head>
+<body>
+<header>
+<img alt="Grape Vineyard" src="https://images4.alphacoders.com/766/766523.jpg"/>
+<h1>GrowGrape.AI</h1>
+<p style="font-style: italic; margin-top: 10px;">Cultivating Excellence in Viticulture</p>
+</header>
+<div class="container">
+<div class="options">
+    <div class="option" onclick="showSection('pest-control')">Pest Control</div>
+    <div class="option" onclick="showSection('disease-control')">Disease Control</div>
+    <div class="option" onclick="showSection('nutrition-management')">Nutrition Management</div>
+</div>
+<!-- Pest Control Section -->
+<div class="content-section" id="pest-control">
+<h2>Common Grape Pests</h2>
+<div class="section-buttons">
+    <!-- Pests List -->
+    <div class="section-button" onclick="toggleMethods('grape-phylloxera')">
+        Grape Phylloxera (Daktulosphaira vitifoliae)
+    </div>
+    <div class="method-buttons" id="grape-phylloxera">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('grape-berry-moth')">
+        Grape Berry Moth (Paralobesia viteana)
+    </div>
+    <div class="method-buttons" id="grape-berry-moth">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('japanese-beetle')">
+        Japanese Beetle (Popillia japonica)
+    </div>
+    <div class="method-buttons" id="japanese-beetle">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('leafhopper')">
+        Leafhopper (Empoasca vitis)
+    </div>
+    <div class="method-buttons" id="leafhopper">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('spider-mites')">
+        Spider Mites (Tetranychus urticae)
+    </div>
+    <div class="method-buttons" id="spider-mites">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('grape-cane-gall-mite')">
+        Grape Cane Gall Mite (Eriophyes vitis)
+    </div>
+    <div class="method-buttons" id="grape-cane-gall-mite">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('cutworms')">
+        Cutworms (Agrotis ipsilon)
+    </div>
+    <div class="method-buttons" id="cutworms">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('weevils')">
+        Weevils (Otiorhynchus sulcatus and others)
+    </div>
+    <div class="method-buttons" id="weevils">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('mealybugs')">
+        Mealybugs (Pseudococcidae)
+    </div>
+    <div class="method-buttons" id="mealybugs">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('thrips')">
+        Thrips (Various species)
+    </div>
+    <div class="method-buttons" id="thrips">
+        <a class="method-button">Preventive Methods</a>
+        <a class="method-button">Curative Solutions</a>
+    </div>
+</div>
+</div>
+
+<!-- Disease Control Section -->
+<div class="content-section" id="disease-control">
+<h2>Common Grape Diseases</h2>
+<div class="section-buttons">
+    <!-- Diseases List -->
+    <div class="section-button" onclick="toggleMethods('powdery-mildew')">
+        Powdery Mildew (Erysiphe necator)
+    </div>
+    <div class="method-buttons" id="powdery-mildew">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('downy-mildew')">
+        Downy Mildew (Plasmopara viticola)
+    </div>
+    <div class="method-buttons" id="downy-mildew">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('botrytis-bunch-rot')">
+        Botrytis Bunch Rot (Gray Mold) (Botrytis cinerea)
+    </div>
+    <div class="method-buttons" id="botrytis-bunch-rot">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('black-rot')">
+        Black Rot (Guignardia bidwellii)
+    </div>
+    <div class="method-buttons" id="black-rot">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('anthracnose')">
+        Anthracnose (Elsinoe ampelina)
+    </div>
+    <div class="method-buttons" id="anthracnose">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('phomopsis-cane-and-leaf-spot')">
+        Phomopsis Cane and Leaf Spot (Phomopsis viticola)
+    </div>
+    <div class="method-buttons" id="phomopsis-cane-and-leaf-spot">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('pierce-disease')">
+        Pierce's Disease (Xylella fastidiosa)
+    </div>
+    <div class="method-buttons" id="pierce-disease">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('crown-gall')">
+        Crown Gall (Agrobacterium tumefaciens)
+    </div>
+    <div class="method-buttons" id="crown-gall">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('eutypa-dieback')">
+        Eutypa Dieback (Eutypa lata)
+    </div>
+    <div class="method-buttons" id="eutypa-dieback">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('esca')">
+        Esca (Black Measles) (Various fungal pathogens)
+    </div>
+    <div class="method-buttons" id="esca">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+
+    <div class="section-button" onclick="toggleMethods('verticillium-wilt')">
+        Verticillium Wilt (Verticillium dahliae)
+    </div>
+    <div class="method-buttons" id="verticillium-wilt">
+        <a class="method-button">Prevention Strategies</a>
+        <a class="method-button">Treatment Options</a>
+    </div>
+</div>
+</div>
+
+<!-- Nutrition Management Section -->
+<div class="content-section" id="nutrition-management">
+<h2>Nutrition &amp; Growth Management</h2>
+<div class="section-buttons">
+    <!-- Pruning -->
+    <div class="section-button" onclick="toggleMethods('pruning')">
+        Pruning (October and November)
+    </div>
+    <div class="method-buttons" id="pruning">
+        <div class="info-content">
+            <p><strong>Timing:</strong> October-November preparation</p>
+            <p><strong>Purpose:</strong> Remove old wood, shape structure</p>
+            <p><strong>Methods:</strong> Cane/spur pruning techniques</p>
+        </div>
+    </div>
+
+    <!-- Bud Break and Shoot Growth -->
+    <div class="section-button" onclick="toggleMethods('bud-break')">
+        Bud Break and Shoot Growth (November and December)
+    </div>
+    <div class="method-buttons" id="bud-break">
+        <div class="info-content">
+            <p><strong>Timing:</strong> November-December growth period</p>
+            <p><strong>Development:</strong> New shoot emergence</p>
+            <p><strong>Care:</strong> Irrigation and pest monitoring</p>
+        </div>
+    </div>
+
+    <!-- Flowering -->
+    <div class="section-button" onclick="toggleMethods('flowering')">
+        Flowering (December and January)
+    </div>
+    <div class="method-buttons" id="flowering">
+        <div class="info-content">
+            <p><strong>Timing:</strong> December-January</p>
+            <p><strong>Development:</strong> Flowering begins</p>
+            <p><strong>Care:</strong> Ensure optimal vine health for pollination</p>
+        </div>
+    </div>
+
+    <!-- Fruit Set and Berry Development -->
+    <div class="section-button" onclick="toggleMethods('fruit-set')">
+        Fruit Set and Berry Development (December, January, and February)
+    </div>
+    <div class="method-buttons" id="fruit-set">
+        <div class="info-content">
+            <p><strong>Timing:</strong> Fruit set after flowering, berry growth from December to February</p>
+            <p><strong>Development:</strong> Pollinated flowers develop into berries</p>
+            <p><strong>Care:</strong> Manage irrigation and fertilizers, monitor for diseases</p>
+        </div>
+    </div>
+
+    <!-- Ripening -->
+    <div class="section-button" onclick="toggleMethods('ripening')">
+        Ripening (January, February, and March)
+    </div>
+    <div class="method-buttons" id="ripening">
+        <div class="info-content">
+            <p><strong>Timing:</strong> January-March</p>
+            <p><strong>Development:</strong> Berries reach full color, sweetness, and flavor</p>
+            <p><strong>Care:</strong> Control irrigation to avoid over-watering, monitor pests and diseases</p>
+        </div>
+    </div>
+
+    <!-- Harvesting -->
+    <div class="section-button" onclick="toggleMethods('harvesting')">
+        Harvesting (February to April)
+    </div>
+    <div class="method-buttons" id="harvesting">
+        <div class="info-content">
+            <p><strong>Timing:</strong> February-April, depending on variety</p>
+            <p><strong>Method:</strong> Hand-picking to minimize damage</p>
+            <p><strong>Post-Harvest:</strong> Cool grapes, sort, and pack based on market requirements</p>
+        </div>
+    </div>
+
+    <!-- Kharad Chaatani -->
+    <div class="section-button" onclick="toggleMethods('kharad-chaatani')">
+        Kharad Chaatani (April)
+    </div>
+    <div class="method-buttons" id="kharad-chaatani">
+        <div class="info-content">
+            <p><strong>Timing:</strong> April</p>
+            <p><strong>Purpose:</strong> Rejuvenate vines, prepare for the next season</p>
+            <p><strong>Method:</strong> Pruning, applying organic matter, and other vineyard practices</p>
+        </div>
+    </div>
+
+    <!-- Shoot and Leaf Development -->
+    <div class="section-button" onclick="toggleMethods('shoot-and-leaf')">
+        Shoot and Leaf Development (May to July)
+    </div>
+    <div class="method-buttons" id="shoot-and-leaf">
+        <div class="info-content">
+            <p><strong>Timing:</strong> May-July</p>
+            <p><strong>Development:</strong> Shoot elongation and leaf expansion</p>
+            <p><strong>Care:</strong> Maximize photosynthesis, support future fruiting</p>
+        </div>
+    </div>
+
+    <!-- Bud Differentiation -->
+    <div class="section-button" onclick="toggleMethods('bud-differentiation')">
+        Bud Differentiation (July to August)
+    </div>
+    <div class="method-buttons" id="bud-differentiation">
+        <div class="info-content">
+            <p><strong>Timing:</strong> July-August</p>
+            <p><strong>Development:</strong> Fruit bud differentiation</p>
+            <p><strong>Purpose:</strong> Critical stage for determining next year's fruit quality</p>
+        </div>
+    </div>
+
+    <!-- Carbohydrate Storage -->
+    <div class="section-button" onclick="toggleMethods('carbohydrate-storage')">
+        Carbohydrate Storage (August to September)
+    </div>
+    <div class="method-buttons" id="carbohydrate-storage">
+        <div class="info-content">
+            <p><strong>Timing:</strong> August-September</p>
+            <p><strong>Development:</strong> Storage of carbohydrates in roots and trunk</p>
+            <p><strong>Purpose:</strong> Energy reserves for future growth</p>
+        </div>
+    </div>
+
+    <!-- Preparation for Dormancy -->
+    <div class="section-button" onclick="toggleMethods('preparation-for-dormancy')">
+        Preparation for Dormancy (October)
+    </div>
+    <div class="method-buttons" id="preparation-for-dormancy">
+        <div class="info-content">
+            <p><strong>Timing:</strong> October</p>
+            <p><strong>Development:</strong> Vine preparation for dormancy</p>
+            <p><strong>Purpose:</strong> Ensure survival through colder months</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<footer>
+<p>© 2025 GrowGrape.AI | Sustainable Viticulture Solutions</p>
+<p>Developed by Shivam Satyawan Madrewar</p>
+</footer>
+
+<script>
+    function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.style.display = 'none';
+        });
+        
+        // Show selected section
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+            activeSection.style.display = 'block';
+        }
+        
+        // Close all method buttons when switching sections
+        document.querySelectorAll('.method-buttons').forEach(method => {
+            method.style.display = 'none';
+        });
+    }
+
+    function toggleMethods(id) {
+        const methodSection = document.getElementById(id);
+        if (methodSection) {
+            methodSection.style.display = methodSection.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+
+    // Show default section on load
+    window.onload = () => {
+        showSection('pest-control');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "1",
+    "topic": "Powdery Mildew",
+    "category": "disease",
+    "keywords": ["powdery mildew", "white powder", "fungal", "mildew", "white coating", "leaves white"],
+    "content": "Powdery mildew (Erysiphe necator) is the most common grape disease. Symptoms: white powdery coating on leaves, shoots, and berries. Causes berry cracking and yield loss. Treatment: sulfur-based fungicides every 7-14 days, potassium bicarbonate, or neem oil. Prevention: good air circulation, avoid overhead irrigation, resistant varieties like Regent or Chambourcin. Most severe in warm dry days with cool nights."
+  },
+  {
+    "id": "2",
+    "topic": "Downy Mildew",
+    "category": "disease",
+    "keywords": ["downy mildew", "yellow spots", "oily spots", "white fuzz", "underside leaves", "plasmopara"],
+    "content": "Downy mildew (Plasmopara viticola) thrives in wet, humid conditions. Symptoms: oily yellow spots on upper leaf surface, white fluffy growth underneath. Can destroy entire crop. Treatment: copper-based fungicides, mancozeb. Prevention: spray before rain, improve canopy airflow, avoid wetting foliage. Worst after heavy rainfall in spring."
+  },
+  {
+    "id": "3",
+    "topic": "Botrytis Bunch Rot",
+    "category": "disease",
+    "keywords": ["botrytis", "bunch rot", "gray mold", "grey mold", "berry rot", "botrytis cinerea"],
+    "content": "Botrytis cinerea (gray mold) infects berries, especially in tight clusters. Symptoms: gray fuzzy mold on berries, berries shrivel and collapse. Thrives in cool, wet weather near harvest. Treatment: iprodione, fenhexamid fungicides. Prevention: open canopy for airflow, leaf removal around clusters, avoid excess nitrogen, harvest before heavy rains."
+  },
+  {
+    "id": "4",
+    "topic": "Grape Phylloxera",
+    "category": "pest",
+    "keywords": ["phylloxera", "root louse", "yellow leaves", "vine decline", "root pest", "aphid-like"],
+    "content": "Phylloxera (Daktulosphaira vitifoliae) is the most destructive grape pest. It feeds on roots causing galls and vine death. No cure once infected. Prevention: plant on phylloxera-resistant rootstocks (SO4, 3309C, 101-14). Grafted vines are standard protection. Sandy soils provide some natural resistance. Do not move soil or equipment from infested vineyards."
+  },
+  {
+    "id": "5",
+    "topic": "Grape Berry Moth",
+    "category": "pest",
+    "keywords": ["berry moth", "worm in grapes", "larvae", "caterpillar", "berry damage", "webbing"],
+    "content": "Grape berry moth (Paralobesia viteana) larvae bore into berries causing direct damage and secondary fungal infections. Three generations per year. Symptoms: webbing around berry clusters, entry holes, berry shriveling. Treatment: Bacillus thuringiensis (Bt) for organic control, or spinosad, carbaryl. Monitor with pheromone traps to time sprays accurately."
+  },
+  {
+    "id": "6",
+    "topic": "Spider Mites",
+    "category": "pest",
+    "keywords": ["spider mites", "mites", "bronzing", "stippling", "webbing leaves", "tiny bugs", "yellow stippling"],
+    "content": "Two-spotted spider mites and grape rust mites cause stippling and bronzing of leaves, reducing photosynthesis. Worst in hot dry summers. Treatment: insecticidal soap, neem oil, sulfur sprays, or miticides like bifenazate. Predatory mites (Phytoseiidae) are excellent biological control. Avoid broad-spectrum insecticides that kill beneficial predators."
+  },
+  {
+    "id": "7",
+    "topic": "Pruning",
+    "category": "viticulture",
+    "keywords": ["pruning", "cutting", "dormant pruning", "spur pruning", "cane pruning", "winter pruning"],
+    "content": "Prune during dormancy (after leaf fall, before bud break) when vines are fully dormant. Spur pruning: leave 2-3 node spurs on permanent cordon arms — best for table grapes and some wine varieties. Cane pruning: replace entire fruiting wood each year with 10-15 node canes — best for Pinot Noir, Riesling. Remove 80-90% of previous year's growth. Always cut to healthy wood (green inside)."
+  },
+  {
+    "id": "8",
+    "topic": "Irrigation",
+    "category": "viticulture",
+    "keywords": ["irrigation", "watering", "drip", "water stress", "drought", "soil moisture"],
+    "content": "Grapevines are drought-tolerant but need consistent moisture for quality fruit. Drip irrigation is most efficient — deliver 1-2 gallons per vine per day during growing season. Deficit irrigation (slight water stress) after fruit set improves berry quality and concentration. Avoid irrigation 2-3 weeks before harvest to concentrate sugars. Sandy soils need more frequent watering than clay soils."
+  },
+  {
+    "id": "9",
+    "topic": "Fertilization",
+    "category": "viticulture",
+    "keywords": ["fertilizer", "nutrition", "nitrogen", "potassium", "nutrients", "feeding", "compost"],
+    "content": "Grapevines need balanced nutrition. Nitrogen: apply 30-50 lbs/acre in spring, avoid excess (causes excessive vigor, disease). Potassium: critical for fruit quality and cold hardiness — apply based on soil test. Phosphorus: rarely deficient in established vineyards. Leaf tissue testing in July is the best way to assess nutrition. Compost and cover crops improve soil health and reduce fertilizer needs."
+  },
+  {
+    "id": "10",
+    "topic": "Harvest Timing",
+    "category": "viticulture",
+    "keywords": ["harvest", "picking", "brix", "sugar", "ripeness", "when to pick", "maturity"],
+    "content": "Harvest timing depends on grape variety and intended use. Measure Brix (sugar content) with a refractometer: table grapes 16-20 Brix, wine grapes 20-26 Brix depending on style. Also check: pH (3.2-3.6 for wine), titratable acidity, seed color (brown = ripe), berry flavor. Taste is the most important indicator. Harvest in cool morning hours to preserve freshness and aroma."
+  },
+  {
+    "id": "11",
+    "topic": "Frost Protection",
+    "category": "viticulture",
+    "keywords": ["frost", "freeze", "cold damage", "spring frost", "wind machine", "frost protection"],
+    "content": "Spring frosts after bud break are the biggest weather risk for grapes. Methods: wind machines (mix warm air from above), overhead sprinklers (ice forms but releases heat protecting buds), smudge pots, site selection on slopes above frost pockets. Delay pruning to delay bud break in frost-prone areas. Varieties with late bud break (Chardonnay, Cabernet) are more frost-tolerant than early varieties (Chardonnay)."
+  },
+  {
+    "id": "12",
+    "topic": "Canopy Management",
+    "category": "viticulture",
+    "keywords": ["canopy", "leaf removal", "shoot thinning", "trellising", "training", "shoot positioning"],
+    "content": "Good canopy management reduces disease pressure and improves fruit quality. Shoot thinning: remove excess shoots early (2-4 weeks after bud break) to 3-6 shoots per foot of cordon. Leaf removal: remove 2-4 leaves around clusters to improve airflow and light exposure — do after berry set. Hedging: trim shoot tips to control excessive vigor. VSP (Vertical Shoot Positioning) trellis is most common."
+  },
+  {
+    "id": "13",
+    "topic": "Varieties for Hot Climates",
+    "category": "variety",
+    "keywords": ["hot climate", "heat", "warm weather", "desert", "mediterranean", "drought tolerant variety"],
+    "content": "Best grape varieties for hot climates: Grenache, Syrah, Tempranillo, Mourvedre, Zinfandel (wine); Muscat of Alexandria, Thompson Seedless, Flame Seedless (table). These varieties tolerate heat, drought, and high sugar accumulation. Plant on south-facing slopes, use deficit irrigation, harvest at night or early morning. Avoid thin-skinned varieties like Pinot Noir in extreme heat."
+  },
+  {
+    "id": "14",
+    "topic": "Varieties for Cold Climates",
+    "category": "variety",
+    "keywords": ["cold climate", "cold hardy", "winter hardy", "frost tolerant variety", "northern", "cold region"],
+    "content": "Cold-hardy varieties for northern climates: Marquette, Frontenac, La Crescent, Itasca, Crimson Pearl. These survive -30°F (-34°C) and are bred for short growing seasons. For milder cold regions: Riesling, Gewurztraminer, Pinot Noir, Regent. Protect vines by hilling soil over graft union in fall, using mulch, and burying canes in extreme climates."
+  },
+  {
+    "id": "15",
+    "topic": "Soil Preparation",
+    "category": "viticulture",
+    "keywords": ["soil", "planting", "soil preparation", "ph", "drainage", "rootstock", "planting site"],
+    "content": "Grapes prefer well-drained soils with pH 5.5-6.5. Avoid waterlogged or compacted soils. Before planting: test soil pH and nutrients, add lime to raise pH or sulfur to lower it, deep rip compacted soils (18-24 inches), install drainage if needed. Grapes grow well in poor, rocky soils — too fertile causes excessive growth. Choose rootstock based on soil type, phylloxera risk, and vigor needed."
+  }
+]
