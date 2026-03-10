@@ -17,7 +17,13 @@ interface ChatbotProps {
 }
 
 const Chatbot = ({ compact }: ChatbotProps) => {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      id: "welcome-msg",
+      role: "assistant",
+      content: "Hey Farmer 👋 How can I help you?",
+    },
+  ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -52,7 +58,7 @@ const Chatbot = ({ compact }: ChatbotProps) => {
       });
 
       const text = await res.text();
-      console.log(text)
+      console.log(text);
       let data: { message?: string; error?: string; details?: string };
       try {
         data = text ? JSON.parse(text) : {};
@@ -60,7 +66,7 @@ const Chatbot = ({ compact }: ChatbotProps) => {
         throw new Error(
           res.ok
             ? "Server returned invalid response."
-            : "Chat server is not responding. Make sure to run: npm run server"
+            : "Chat server is not responding. Make sure to run: npm run server",
         );
       }
 
@@ -75,8 +81,7 @@ const Chatbot = ({ compact }: ChatbotProps) => {
       };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Unknown error";
+      const message = err instanceof Error ? err.message : "Unknown error";
       const hint =
         message.includes("server") || message.includes("fetch")
           ? ""
@@ -108,19 +113,28 @@ const Chatbot = ({ compact }: ChatbotProps) => {
               <Bot className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <h2 className="font-display text-lg font-semibold">GrowGrape AI Assistant</h2>
-              <p className="text-xs text-muted-foreground">Ask about viticulture, pests, diseases, or nutrition</p>
+              <h2 className="font-display text-lg font-semibold">
+                GrowGrape AI Assistant
+              </h2>
+              <p className="text-xs text-muted-foreground">
+                Ask about viticulture, pests, diseases, or nutrition
+              </p>
             </div>
           </div>
         </CardHeader>
       )}
-      <CardContent className={cn("flex flex-col flex-1 min-h-0", compact && "p-0")}>
+      <CardContent
+        className={cn("flex flex-col flex-1 min-h-0", compact && "p-0")}
+      >
         <ScrollArea className={cn("flex-1", compact ? "px-2" : "px-4")}>
           <div className={cn("space-y-4", compact ? "py-2" : "py-4")}>
             {messages.length === 0 && (
               <div className="text-center text-muted-foreground text-sm py-8">
                 <Bot className="h-10 w-10 mx-auto mb-2 opacity-50" />
-                <p>Ask a question about grape growing, pest control, or vineyard management.</p>
+                <p>
+                  Ask a question about grape growing, pest control, or vineyard
+                  management.
+                </p>
               </div>
             )}
             {messages.map((msg) => (
@@ -128,7 +142,7 @@ const Chatbot = ({ compact }: ChatbotProps) => {
                 key={msg.id}
                 className={cn(
                   "flex gap-3",
-                  msg.role === "user" ? "justify-end" : "justify-start"
+                  msg.role === "user" ? "justify-end" : "justify-start",
                 )}
               >
                 {msg.role === "assistant" && (
@@ -141,7 +155,7 @@ const Chatbot = ({ compact }: ChatbotProps) => {
                     "max-w-[85%] rounded-lg px-4 py-2.5 text-sm",
                     msg.role === "user"
                       ? "bg-primary text-primary-foreground"
-                      : "bg-muted"
+                      : "bg-muted",
                   )}
                 >
                   <p className="whitespace-pre-wrap">{msg.content}</p>
@@ -160,7 +174,9 @@ const Chatbot = ({ compact }: ChatbotProps) => {
                 </div>
                 <div className="rounded-lg px-4 py-2.5 bg-muted flex items-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span className="text-sm text-muted-foreground">Thinking...</span>
+                  <span className="text-sm text-muted-foreground">
+                    Thinking...
+                  </span>
                 </div>
               </div>
             )}
