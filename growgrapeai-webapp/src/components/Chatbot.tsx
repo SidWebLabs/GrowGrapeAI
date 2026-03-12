@@ -51,7 +51,7 @@ const Chatbot = ({ compact }: ChatbotProps) => {
         content: m.content,
       }));
 
-      const res = await fetch("http://localhost:8000/api/chat", {
+      const res = await fetch(import.meta.env.VITE_BACKEND_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: chatHistory }),
