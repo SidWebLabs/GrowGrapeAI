@@ -57,6 +57,7 @@
 //   const kb = getKnowledgeBase();
 //   res.json(kb.map((e) => ({ id: e.id, topic: e.topic, category: e.category })));
 // };
+
 import { searchKnowledgeBase } from "../models/knowledgeModel.js";
 import { buildContext } from "../utils/contextBuilder.js";
 import { callGroq } from "../services/groqService.js";
