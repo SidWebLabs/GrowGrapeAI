@@ -57,23 +57,14 @@
 //   const kb = getKnowledgeBase();
 //   res.json(kb.map((e) => ({ id: e.id, topic: e.topic, category: e.category })));
 // };
-
-import { searchKnowledgeBase } from "../server/models/knowledgeModel.js";
-import { buildContext } from "../server/utils/contextBuilder.js";
-import { callGroq } from "../server/services/groqService.js";
-import { callGemini } from "../server/services/geminiService.js";
+import { searchKnowledgeBase } from "../models/knowledgeModel.js";
+import { buildContext } from "../utils/contextBuilder.js";
+import { callGroq } from "../services/groqService.js";
+import { callGemini } from "../services/geminiService.js";
 
 const SYSTEM_PROMPT_WITH_CONTEXT = (context) => `
 You are GrowGrape AI, a specialist assistant for grape farming.
-
-You ONLY answer questions related to:
-- grape cultivation, vineyard management, pests, diseases
-- irrigation, fertilizers, pruning, harvesting, grape plant health
-
-If the user asks something unrelated to grape farming, respond with:
-"I'm GrowGrape AI 🌱 and I can only help with grape farming questions."
-
-Use the knowledge base below if relevant and keep answers practical for farmers.
+Use the knowledge base below if relevant.
 
 KNOWLEDGE BASE:
 ${context}
@@ -81,12 +72,10 @@ ${context}
 
 const SYSTEM_PROMPT_GENERAL = `
 You are GrowGrape AI, a specialist assistant for grape farming.
-You ONLY answer grape farming related questions.
-If unrelated, reply: "I'm GrowGrape AI 🌱 and I can only help with grape farming questions."
-Keep answers short, practical, and farmer-friendly.
+Only answer grape farming questions.
 `;
 
-export default async function handler(req, res) {
+export const chatHandler = async (req, res) => {
   // CORS headers
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
@@ -96,7 +85,6 @@ export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
   const { messages } = req.body;
-
   if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: "messages array is required" });
   }
@@ -107,12 +95,10 @@ export default async function handler(req, res) {
   const matches = searchKnowledgeBase(userQuery);
   const context = buildContext(matches);
 
-  const systemPrompt = context
-    ? SYSTEM_PROMPT_WITH_CONTEXT(context)
-    : SYSTEM_PROMPT_GENERAL;
+  const systemPrompt = context ? SYSTEM_PROMPT_WITH_CONTEXT(context) : SYSTEM_PROMPT_GENERAL;
 
   const providers = [
-    { name: "Groq",   fn: () => callGroq(systemPrompt, messages) },
+    { name: "Groq", fn: () => callGroq(systemPrompt, messages) },
     { name: "Gemini", fn: () => callGemini(systemPrompt, messages) },
   ];
 
@@ -130,4 +116,13 @@ export default async function handler(req, res) {
   }
 
   return res.status(500).json({ error: "All AI providers failed. Check your API keys." });
-}
+};
+
+export const healthCheck = (req, res) => {
+  res.json({ status: "ok" });
+};
+
+export const getTopics = (req, res) => {
+  const kb = searchKnowledgeBase(""); // or getKnowledgeBase()
+  res.json(kb.map((e) => ({ id: e.id, topic: e.topic, category: e.category })));
+};
