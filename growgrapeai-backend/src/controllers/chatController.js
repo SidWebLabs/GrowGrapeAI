@@ -57,11 +57,10 @@
 //   const kb = getKnowledgeBase();
 //   res.json(kb.map((e) => ({ id: e.id, topic: e.topic, category: e.category })));
 // };
-
-import { searchKnowledgeBase } from "../server/models/knowledgeModel.js";
-import { buildContext } from "../server/utils/contextBuilder.js";
-import { callGroq } from "../server/services/groqService.js";
-import { callGemini } from "../server/services/geminiService.js";
+import { searchKnowledgeBase, getKnowledgeBase } from "../models/knowledgeModel.js";
+import { buildContext } from "../utils/contextBuilder.js";
+import { callGroq } from "../services/groqService.js";
+import { callGemini } from "../services/geminiService.js";
 
 const SYSTEM_PROMPT_WITH_CONTEXT = (context) => `
 You are GrowGrape AI, a specialist assistant for grape farming.
@@ -86,15 +85,7 @@ If unrelated, reply: "I'm GrowGrape AI 🌱 and I can only help with grape farmi
 Keep answers short, practical, and farmer-friendly.
 `;
 
-export default async function handler(req, res) {
-  // CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
-  if (req.method === "OPTIONS") return res.status(200).end();
-  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
-
+export const chatHandler = async (req, res) => {
   const { messages } = req.body;
 
   if (!Array.isArray(messages) || messages.length === 0) {
@@ -130,4 +121,16 @@ export default async function handler(req, res) {
   }
 
   return res.status(500).json({ error: "All AI providers failed. Check your API keys." });
-}
+};
+
+export const healthCheck = (req, res) => {
+  res.json({
+    status: "ok",
+    knowledgeBaseEntries: getKnowledgeBase().length,
+  });
+};
+
+export const getTopics = (req, res) => {
+  const kb = getKnowledgeBase();
+  res.json(kb.map((e) => ({ id: e.id, topic: e.topic, category: e.category })));
+};

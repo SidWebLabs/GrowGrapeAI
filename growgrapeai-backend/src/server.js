@@ -1,7 +1,7 @@
 import "dotenv/config";
 import app from "./app.js";
 
-const PORT = process.env.SERVER_PORT || 3001;
+const PORT = process.env.SERVER_PORT || 8000;
 
 // Only call app.listen() when running locally (not on Vercel)
 if (process.env.VERCEL !== "1") {
