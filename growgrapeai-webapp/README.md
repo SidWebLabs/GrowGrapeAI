@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome GrowGrapeAI project
 
 ## Project info
 
