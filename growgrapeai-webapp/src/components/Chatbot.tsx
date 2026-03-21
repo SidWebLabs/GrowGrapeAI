@@ -346,10 +346,13 @@ const Chatbot = ({ compact }: ChatbotProps) => {
           <Textarea
             placeholder="Ask about grape farming, pests, diseases..."
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => {
+              setInput(e.target.value);
+              e.target.style.height = "auto";
+              e.target.style.height = e.target.scrollHeight + "px";
+            }}
             onKeyDown={handleKeyDown}
-            rows={1}
-            className="min-h-[44px] max-h-32 resize-none"
+            className="min-h-[44px] max-h-[120px] overflow-hidden resize-none"
             disabled={isLoading}
           />
 
