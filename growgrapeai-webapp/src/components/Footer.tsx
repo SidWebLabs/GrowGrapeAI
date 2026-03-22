@@ -8,10 +8,10 @@ const Footer = () => (
         Growing Smarter, Together
       </h2>
       <p className="text-hero-foreground/70 max-w-lg mx-auto mb-8">
-        GrowGrape.AI brings AI-powered insights to every stage of grape cultivation — empowering farmers with the knowledge to grow healthier, more productive vineyards.
+        GrowGrape.AI brings AI powered insights to every stage of grape cultivation empowering farmers with the knowledge to grow healthier, more productive vineyards.
       </p>
       <div className="border-t border-hero-foreground/15 pt-6 mt-6 text-sm text-hero-foreground/50">
-        <p>© 202 GrowGrape.AI | Sustainable Viticulture Solutions</p>
+        <p>© 2026 GrowGrape.AI | Sustainable Viticulture Solutions</p>
         <p className="mt-1">Developed by Siddhesh Kulkarni</p>
       </div>
     </div>

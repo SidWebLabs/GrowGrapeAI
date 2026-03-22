@@ -26,7 +26,7 @@ const HeroSection = () => {
           className="text-hero-foreground/80 text-lg md:text-xl max-w-2xl mx-auto animate-fade-in-up"
           style={{ animationDelay: "0.3s" }}
         >
-          AI-powered grape farming guidance — from pest control and disease management to complete nutrition lifecycle. Grow better grapes, sustainably.
+          AI powered grape farming guidance from pest control and disease management to complete nutrition lifecycle. Grow better grapes, sustainably.
         </p>
       </div>
     </section>
