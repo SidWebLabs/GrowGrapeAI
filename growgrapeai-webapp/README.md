@@ -1,67 +1,71 @@
-# Welcome GrowGrapeAI project
+# GrowGrape AI Frontend
 
-## Project info
+Frontend web app for GrowGrape AI, built with React + Vite + TypeScript.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Tech Stack
 
-## How can I edit this code?
+- React 18
+- Vite 5
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Vitest + Testing Library
 
-There are several ways of editing your application.
+## Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ (Node.js 20+ recommended)
+- npm 9+
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Setup
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+npm install
+```
 
-Follow these steps:
+## Environment Variables
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Create a `.env` file in `growgrapeai-webapp`:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```env
+VITE_BACKEND_API_URL=http://localhost:8000/api/chat
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+Notes:
+- `VITE_BACKEND_API_URL` must point to the backend chat endpoint.
+- Image analysis requests are automatically sent to `/api/analyze-image` by deriving base URL from this value.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## Run Locally
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Frontend default dev URL:
+- `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start Vite dev server
+- `npm run build` - Create production build
+- `npm run build:dev` - Build with development mode
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run test` - Run tests once
+- `npm run test:watch` - Run tests in watch mode
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+- `src/pages` - Route-level pages
+- `src/components` - Reusable UI and feature components
+- `src/components/ui` - shadcn/ui primitives
+- `src/assets` - Static assets bundled by Vite
+- `public` - Public static files (favicon/logo, robots.txt)
 
-This project is built with:
+## Backend Integration
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The chatbot UI depends on backend APIs:
+- `POST /api/chat`
+- `POST /api/analyze-image`
+- `GET /api/health`
 
-## How can I deploy this project?
-
-
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Make sure backend server is running before using chat/image analysis features.
