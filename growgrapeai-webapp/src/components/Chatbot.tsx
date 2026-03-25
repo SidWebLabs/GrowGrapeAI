@@ -69,7 +69,7 @@ const Chatbot = ({ compact }: ChatbotProps) => {
     {
       id: "welcome-msg",
       role: "assistant",
-      content: "Hey Farmer 👋 How can I help you? You can ask me anything about grape farming or upload an image of a disease or pesticide!",
+      content: "Hello 👋, I am **Dr.DRS**, your AI-powered viticulture expert. From pest and disease diagnosis to nutrition and crop management, I’m here to help you grow healthier vines and achieve better yields. Ask me anything about your grape farm!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -242,10 +242,10 @@ const Chatbot = ({ compact }: ChatbotProps) => {
                     <p className="text-sm font-medium">What would you like to analyze?</p>
                     <div className="flex gap-2">
                       <Button size="sm" variant="outline" className="flex-1 gap-1.5" onClick={() => sendImageAnalysis("disease")}>
-                        <Leaf className="h-4 w-4 text-green-600" />Disease / Pest
+                        <Leaf className="h-4 w-4 text-green-600" />Disease
                       </Button>
                       <Button size="sm" variant="outline" className="flex-1 gap-1.5" onClick={() => sendImageAnalysis("pesticide")}>
-                        <FlaskConical className="h-4 w-4 text-blue-600" />Pesticide
+                        <FlaskConical className="h-4 w-4 text-blue-600" />Pest
                       </Button>
                     </div>
                     <button onClick={clearImage} className="text-xs text-muted-foreground underline w-full text-center">Cancel</button>

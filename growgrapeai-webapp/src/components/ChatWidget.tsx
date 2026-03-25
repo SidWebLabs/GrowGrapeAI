@@ -49,7 +49,13 @@ const ChatWidget = () => {
               viewBox="0 0 20 10"
               fill="none"
             >
-              <path d="M0 0 L10 10 L20 0" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="1" strokeLinejoin="round" />
+              <path
+                d="M0 0 L10 10 L20 0"
+                fill="currentColor"
+                stroke="hsl(var(--border))"
+                strokeWidth="1"
+                strokeLinejoin="round"
+              />
               {/* White fill to cover border */}
               <path d="M1 0 L10 9 L19 0" fill="currentColor" />
             </svg>
@@ -73,7 +79,7 @@ const ChatWidget = () => {
         className={cn(
           "fixed bottom-6 right-6 z-40 h-14 w-14 rounded-full shadow-xl transition-all duration-300 flex items-center justify-center",
           "bg-primary text-primary-foreground hover:scale-110 hover:shadow-2xl active:scale-95",
-          open && "scale-0 opacity-0 pointer-events-none"
+          open && "scale-0 opacity-0 pointer-events-none",
         )}
       >
         {/* Continuous pulse ring to attract user */}
@@ -88,7 +94,9 @@ const ChatWidget = () => {
           "rounded-3xl",
           "w-[370px] lg:w-[400px] max-w-[calc(100vw-2rem)] h-[540px] max-h-[calc(100vh-6rem)]",
           "transition-all duration-300 origin-bottom-right",
-          open ? "scale-100 opacity-100" : "scale-90 opacity-0 pointer-events-none"
+          open
+            ? "scale-100 opacity-100"
+            : "scale-90 opacity-0 pointer-events-none",
         )}
       >
         {/* Header */}
@@ -98,10 +106,10 @@ const ChatWidget = () => {
               <Sparkles className="h-4 w-4 text-primary" />
             </div>
             <div>
-              <p className="text-sm font-semibold leading-none">GrowGrape AI</p>
+              <p className="text-sm font-semibold leading-none"> Dr. DRS</p>
               <p className="text-[10px] text-muted-foreground mt-0.5 flex items-center gap-1">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-green-500" />
-                Online · Ready to help
+                Online · AI-Powered Crop Doctor for Grapes
               </p>
             </div>
           </div>
