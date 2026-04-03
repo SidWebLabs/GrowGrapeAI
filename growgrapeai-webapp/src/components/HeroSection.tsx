@@ -36,7 +36,9 @@ const SplashScreen = ({ onDone }: { onDone: () => void }) => {
         src="/Logo.png"
         alt="GrowGrape AI"
         className="h-36 w-auto object-contain"
-        style={{ animation: "logoPop 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both" }}
+        style={{
+          animation: "logoPop 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both",
+        }}
       />
       <p
         className="mt-3 text-sm font-semibold tracking-widest uppercase text-gray-400"
@@ -63,29 +65,42 @@ const LiveViewerBadge = () => {
   const [direction, setDirection] = useState<"up" | "down">("up");
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const jump = RANDOM_JUMPS[Math.floor(Math.random() * RANDOM_JUMPS.length)];
-      const goUp = Math.random() < 0.6;
+    const interval = setInterval(
+      () => {
+        const jump =
+          RANDOM_JUMPS[Math.floor(Math.random() * RANDOM_JUMPS.length)];
+        const goUp = Math.random() < 0.6;
 
-      setCount((prev) => {
-        const next = goUp ? prev + jump : prev - jump;
-        if (next > 50) { setDirection("down"); return prev - jump < 5 ? 5 : prev - jump; }
-        if (next < 5)  { setDirection("up");   return prev + jump > 50 ? 50 : prev + jump; }
-        setDirection(goUp ? "up" : "down");
-        return next;
-      });
+        setCount((prev) => {
+          const next = goUp ? prev + jump : prev - jump;
+          if (next > 50) {
+            setDirection("down");
+            return prev - jump < 5 ? 5 : prev - jump;
+          }
+          if (next < 5) {
+            setDirection("up");
+            return prev + jump > 50 ? 50 : prev + jump;
+          }
+          setDirection(goUp ? "up" : "down");
+          return next;
+        });
 
-      setBump(true);
-      setTimeout(() => setBump(false), 400);
-    }, Math.floor(Math.random() * 4000) + 3000);
+        setBump(true);
+        setTimeout(() => setBump(false), 400);
+      },
+      Math.floor(Math.random() * 4000) + 3000,
+    );
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div
+    <>
+      {/* <div
       className="fixed bottom-5 left-4 z-50 flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-md border border-gray-200/80 shadow-lg shadow-black/10"
-      style={{ animation: "badgeSlideUp 0.5s cubic-bezier(0.16,1,0.3,1) 3s both" }}
+      style={{
+        animation: "badgeSlideUp 0.5s cubic-bezier(0.16,1,0.3,1) 3s both",
+      }}
     >
       <style>{`
         @keyframes badgeSlideUp {
@@ -110,17 +125,6 @@ const LiveViewerBadge = () => {
         />
         <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
       </span>
-{/* 
-      <div className="flex -space-x-2">
-        {["🧑‍🌾", "👩‍🔬", "🧑‍💼", "👨‍🌾"].map((emoji, i) => (
-          <span
-            key={i}
-            className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 border-2 border-white text-xs"
-          >
-            {emoji}
-          </span>
-        ))}
-      </div> */}
 
       <p className="text-xs font-semibold text-gray-700 whitespace-nowrap">
         <span
@@ -128,10 +132,11 @@ const LiveViewerBadge = () => {
           style={{ animation: bump ? "countBump 0.4s ease-in-out" : "none" }}
         >
           {count}
-        </span>
-        {" "}people viewing now
+        </span>{" "}
+        people viewing now
       </p>
-    </div>
+    </div> */}
+    </>
   );
 };
 
@@ -175,16 +180,16 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto flex flex-col items-center gap-4">
+        <div className="relative z-10 text-center !px-3 lg:!px-6 max-w-3xl mx-auto flex flex-col items-center gap-2 lg:gap-4">
           <h1
-            className="font-display text-5xl sm:text-6xl md:text-7xl font-extrabold text-hero-foreground leading-tight tracking-tight animate-fade-in-up"
+            className="font-display text-2xl sm:text-6xl md:text-7xl font-extrabold text-hero-foreground leading-tight tracking-tight animate-fade-in-up"
             style={{ animationDelay: "0.15s" }}
           >
             GrowGrape AI
           </h1>
 
           <p
-            className="text-hero-foreground/90 text-xl font-semibold tracking-wide animate-fade-in-up italic"
+            className="text-hero-foreground/90 text-base font-semibold tracking-wide animate-fade-in-up italic"
             style={{ animationDelay: "0.3s" }}
           >
             "Grow Smarter. Harvest Better. Sustain Forever."
@@ -208,7 +213,9 @@ const HeroSection = () => {
             </span>
             . We provide guidance on pest management, disease management, and
             nutrition management — along with the AI chatbot{" "}
-            <span className="text-hero-foreground font-semibold">"Dr. DRS"</span>
+            <span className="text-hero-foreground font-semibold">
+              "Dr. DRS"
+            </span>
             . Designed for progressive farmers and agribusinesses, it minimizes
             risks, maximizes productivity, and builds a sustainable pathway
             toward high-quality grape production.
