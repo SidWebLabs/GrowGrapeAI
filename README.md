@@ -1,87 +1,130 @@
-# GrowGrapeAI Monorepo Overview
+# GrowGrapeAI
 
-This is the common root documentation for the GrowGrapeAI project.
-It includes both frontend and backend structure in one place.
+AI-powered viticulture assistant for grape farmers. The web app features **Dr.DRS** — a chatbot for grape farming questions, pest/disease guidance, and grape image analysis.
 
 ## Projects
 
-- `growgrapeai-webapp` - React + Vite frontend
-- `growgrapeai-backend` - Node.js + Express backend API
+| Folder | Description |
+|--------|-------------|
+| `growgrapeai-webapp` | React + Vite + TypeScript frontend |
+| `growgrapeai-backend` | Node.js + Express API |
 
-## Combined Folder Structure
+## Features
+
+- **Chat assistant** — Ask about pruning, pests, diseases, harvest, irrigation, and grape market pricing
+- **Topic restriction** — Off-topic questions (sports, celebrities, politics, movies) receive a short refusal; grape-related questions are always answered
+- **Image analysis** — Upload grape plant or pesticide images for AI diagnosis
+- **Knowledge base** — Backend injects relevant viticulture context into responses
+
+## Quick Start
+
+### 1. Backend
+
+```bash
+cd growgrapeai-backend
+npm install
+```
+
+Create `growgrapeai-backend/.env`:
+
+```env
+SERVER_PORT=8000
+GROQ_API_KEY=your_groq_api_key
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+```bash
+npm run dev
+```
+
+Backend runs at `http://localhost:8000`
+
+### 2. Frontend
+
+```bash
+cd growgrapeai-webapp
+npm install
+```
+
+Create `growgrapeai-webapp/.env`:
+
+```env
+VITE_BACKEND_API_URL=http://localhost:8000/api/chat
+```
+
+```bash
+npm run dev
+```
+
+Frontend runs at `http://localhost:8080`
+
+## API Endpoints
+
+Base path: `/api`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/chat` | Chat with Dr.DRS |
+| `POST` | `/api/analyze-image` | Analyze grape-related images |
+| `GET` | `/api/health` | Health check |
+| `GET` | `/api/kb/topics` | List knowledge-base topics |
+
+### Chat request example
+
+```json
+{
+  "messages": [
+    { "role": "user", "content": "how do I treat powdery mildew?" }
+  ]
+}
+```
+
+## Folder Structure
 
 ```text
 GrowGrapeAI/
 |-- README.md
 |-- growgrapeai-webapp/
-|   |-- README.md
-|   |-- package.json
-|   |-- index.html
-|   |-- public/
-|   |   |-- GrowGrape.AI.png
-|   |   |-- GrowGrape.AI..png
-|   |   `-- robots.txt
 |   |-- src/
-|   |   |-- App.tsx
-|   |   |-- main.tsx
-|   |   |-- index.css
-|   |   |-- assets/
 |   |   |-- components/
 |   |   |   |-- Chatbot.tsx
 |   |   |   |-- ChatWidget.tsx
-|   |   |   |-- HeroSection.tsx
-|   |   |   |-- Footer.tsx
 |   |   |   `-- ui/
 |   |   |-- pages/
-|   |   |   |-- Index.tsx
-|   |   |   `-- NotFound.tsx
-|   |   |-- hooks/
-|   |   |-- lib/
-|   |   |-- data/
-|   |   `-- test/
-|   |-- vite.config.ts
-|   |-- tailwind.config.ts
-|   `-- tsconfig.json
+|   |   `-- ...
+|   `-- .env
 `-- growgrapeai-backend/
-    |-- README.md
-    |-- package.json
-    |-- vercel.json
-    `-- src/
-        |-- server.js
-        |-- app.js
-        |-- routes/
-        |   `-- chatRoutes.js
-        |-- controllers/
-        |   |-- chatController.js
-        |   `-- imageController.js
-        |-- services/
-        |   |-- groqService.js
-        |   |-- geminiService.js
-        |   `-- imageService.js
-        |-- models/
-        |   `-- knowledgeModel.js
-        |-- utils/
-        |   `-- contextBuilder.js
-        `-- data/
-            `-- knowledge-base.json
+    |-- src/
+    |   |-- server.js
+    |   |-- controllers/
+    |   |   |-- chatController.js
+    |   |   `-- imageController.js
+    |   |-- services/
+    |   |   |-- groqService.js
+    |   |   |-- geminiService.js
+    |   |   `-- imageService.js
+    |   |-- models/
+    |   |   `-- knowledgeModel.js
+    |   |-- utils/
+    |   |   `-- contextBuilder.js
+    |   `-- data/
+    |       `-- knowledge-base.json
+    `-- .env
 ```
 
-## Quick Start
+## Tech Stack
 
-Frontend:
+**Frontend:** React 18, Vite, TypeScript, Tailwind CSS, shadcn/ui
 
-```bash
-cd growgrapeai-webapp
-npm install
-npm run dev
-```
+**Backend:** Node.js, Express, Groq API (primary), Google Gemini (fallback)
 
-Backend:
+## Deployment
 
-```bash
-cd growgrapeai-backend
-npm install
-npm run dev
-```
+- Backend is configured for Vercel (`vercel.json`) and local Node runtime
+- Set the same environment variables in your deployment dashboard
+- Point `VITE_BACKEND_API_URL` to your deployed backend `/api/chat` endpoint
 
-Then open frontend in browser and ensure backend is running for chat and image analysis features.
+## More Documentation
+
+- [Frontend README](growgrapeai-webapp/README.md)
+- [Backend README](growgrapeai-backend/README.md)
