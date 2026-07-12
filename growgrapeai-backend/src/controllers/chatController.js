@@ -63,8 +63,21 @@ import { buildContext } from "../utils/contextBuilder.js";
 import { callGroq } from "../services/groqService.js";
 import { callGemini } from "../services/geminiService.js";
 
+const REFUSAL =
+  "I'm **Dr.DRS**, your viticulture expert. I can only help with grape farming. Please ask me something about your grape farm!";
+
+const TOPIC_RULES = `
+You are Dr.DRS, a grape farming expert ONLY.
+- Only answer viticulture, vineyard, grape pest/disease, harvest, and grape market/pricing questions.
+- For off-topic questions (sports, politics, celebrities, movies, general knowledge), reply with EXACTLY this and nothing else: "${REFUSAL}"
+- Do NOT add bullet lists, suggestions, or extra paragraphs when refusing.
+- If the user's message mentions grapes, vines, vineyards, or viticulture, always answer it — never refuse.
+- Never discuss cricket, politicians, celebrities, or entertainment.
+`;
+
 const SYSTEM_PROMPT_WITH_CONTEXT = (context) => `
-You are GrowGrape AI, a specialist assistant for grape farming.
+You are Dr.DRS (GrowGrape AI), a specialist assistant for grape farming.
+${TOPIC_RULES}
 Use the knowledge base below if relevant.
 
 KNOWLEDGE BASE:
@@ -72,8 +85,8 @@ ${context}
 `;
 
 const SYSTEM_PROMPT_GENERAL = `
-You are GrowGrape AI, a specialist assistant for grape farming.
-Only answer grape farming questions.
+You are Dr.DRS (GrowGrape AI), a specialist assistant for grape farming.
+${TOPIC_RULES}
 `;
 
 export const chatHandler = async (req, res) => {
@@ -96,7 +109,10 @@ export const chatHandler = async (req, res) => {
   const matches = searchKnowledgeBase(userQuery);
   const context = buildContext(matches);
 
-  const systemPrompt = context ? SYSTEM_PROMPT_WITH_CONTEXT(context) : SYSTEM_PROMPT_GENERAL;
+  const isGrapeTopic = /\b(grape|grapes|vine|vineyard|viticulture)\b/i.test(userQuery);
+  const grapeHint = isGrapeTopic ? "\nThe user's latest message is about grapes — answer it helpfully.\n" : "";
+
+  const systemPrompt = (context ? SYSTEM_PROMPT_WITH_CONTEXT(context) : SYSTEM_PROMPT_GENERAL) + grapeHint;
 
   const providers = [
     { name: "Groq", fn: () => callGroq(systemPrompt, messages) },
