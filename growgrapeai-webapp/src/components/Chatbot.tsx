@@ -69,7 +69,7 @@ const Chatbot = ({ compact }: ChatbotProps) => {
     {
       id: "welcome-msg",
       role: "assistant",
-      content: "Hello 👋, I am **Dr.DRS**, your AI-powered viticulture expert. From pest and disease diagnosis to nutrition and crop management, I’m here to help you grow healthier vines and achieve better yields. Ask me anything about your grape farm!",
+      content: "Hello 👋, I am **Dr.DRS**, your AI-powered viticulture expert. Ask me anything about your grape farm!",
     },
   ]);
   const [input, setInput] = useState("");

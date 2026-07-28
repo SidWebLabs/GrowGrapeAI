@@ -107,9 +107,12 @@ export const chatHandler = async (req, res) => {
   const userQuery = lastUserMsg?.content || "";
 
   const matches = searchKnowledgeBase(userQuery);
-  const context = buildContext(matches);
+  const context = buildContext(matches.slice(0, 4)); // Limit to top 4 matches
 
-  const isGrapeTopic = /\b(grape|grapes|vine|vineyard|viticulture)\b/i.test(userQuery);
+  const isGrapeTopic =
+    /\b(grape|grapes|vine|vineyard|viticulture|berry|berries|bunch|cluster|pruning|canopy|trellis|ga3|gibberellic|powdery mildew|downy mildew|anthracnose|thrips|mealybug|mites|fruit set|flowering|harvest|brix|raisin)\b/i.test(
+      userQuery
+    );
   const grapeHint = isGrapeTopic ? "\nThe user's latest message is about grapes — answer it helpfully.\n" : "";
 
   const systemPrompt = (context ? SYSTEM_PROMPT_WITH_CONTEXT(context) : SYSTEM_PROMPT_GENERAL) + grapeHint;
